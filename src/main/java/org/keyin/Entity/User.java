@@ -4,6 +4,7 @@ import javax.persistence.*;
 
 @Entity
 public class User {
+
     @Id
     @SequenceGenerator(name = "user_sequence", sequenceName = "user_sequence", allocationSize = 1, initialValue = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_sequence")
@@ -33,4 +34,5 @@ public class User {
     public void setUserInput(String userInput) {
         this.userInput = userInput;
     }
+
 }

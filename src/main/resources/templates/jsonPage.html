@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>JSON Page</title>
+  <title>Binary Search Tree Visualization</title>
+  <link rel="stylesheet" href="/css/styles.css"> <!-- Add this line to include the script.css file -->
+
 </head>
 <body>
-<h1>JSON Page</h1>
-<pre th:text="${jsonData}"></pre>
+<h1>Binary Search Tree Visualization</h1>
+<!-- Display the JSON data as a hierarchical tree -->
+<pre class="json-tree" th:text="${jsonData}"></pre>
+
 <a href="/userInputPage">Go Back</a>
 </body>
 </html>

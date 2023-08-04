@@ -2,17 +2,19 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <title>User Input Page</title>
-  <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
 <h1>User Input Page</h1>
-
-<form action="/processInput" method="post">
-  <label for="userInput">Enter your input:</label>
-  <input type="text" id="userInput" name="userInput">
+<form th:action="@{/process-numbers}" method="post">
+  <label for="numbers">Enter a series of numbers separated by a space:</label>
+  <input type="text" id="numbers" name="numbers" required>
   <button type="submit">Submit</button>
 </form>
-<a th:href="@{/jsonPage}"><button>Display Json</button></a>
-<a th:href="@{/previousPage}">Previous</a>
+<br>
+<!-- Button to Show Previous -->
+<a th:href="@{/previous-trees}" class="button">Show Previous</a>
+<br>
+<!-- Button to Display JSON -->
+<a th:href="@{/jsonPage}" class="button">Display JSON</a>
 </body>
 </html>

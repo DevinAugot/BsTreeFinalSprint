@@ -11,3 +11,10 @@ h1 {
 p {
     color: #333;
 }
+
+
+.json-tree {
+    white-space: pre-wrap;
+    font-family: monospace;
+    /* Add any other styles you want to apply to the JSON representation here */
+}
