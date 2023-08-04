@@ -39,6 +39,7 @@ public class BinarySearchTree {
 
     public BinarySearchTree() {
         this.root = null;
+
     }
 
     public void insert(int value) {
@@ -68,7 +69,7 @@ public class BinarySearchTree {
             return "{}";
         }
 
-        return toJsonRecursive(root, 0);
+        return "{\n\"root\":" + toJsonRecursive(root, 0) + "\n}";
     }
 
     private String toJsonRecursive(Node current, int level) {
@@ -78,7 +79,7 @@ public class BinarySearchTree {
         // Add indentation based on the current level
         String indentation = "  ".repeat(level + 1);
 
-        // Add value
+        // Add value of the current node (root in the first call)
         jsonBuilder.append(indentation).append("\"value\":").append(current.getValue());
 
         // Add left child
@@ -100,4 +101,5 @@ public class BinarySearchTree {
 
         return jsonBuilder.toString();
     }
+
 }
