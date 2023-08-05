@@ -5,12 +5,14 @@
 </head>
 <body>
 <h1>Previous Trees</h1>
+<a href="/enter-numbers">Go Back</a>
+<a href="/">Home</a>
 <ul>
   <!-- Iterate over the list of JSON representations to display the trees -->
   <li th:each="treeJson : ${treeJsonList}">
     <pre th:text="${treeJson}"></pre>
   </li>
 </ul>
-<a href="/enter-numbers">Go Back</a>
+
 </body>
 </html>
