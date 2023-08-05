@@ -18,13 +18,13 @@ public class UserInputController {
     @Autowired
     private UserRepository userRepository;
 
-    @GetMapping("/userInputPage")
+    @GetMapping("/enter-numbers")
     public String showUserInputPage() {
-        return "userInput"; // This will return the "userInput.html" page from "templates" folder
+        return "enter-numbers";
     }
 
     @PostMapping("/process-numbers")
-    public String processUserInput(@RequestParam("numbers") String numbers) {
+    public String processUserInput(@RequestParam("numbers") String numbers, Model model) {
         // Process the user input (you can add your logic here)
         System.out.println("User input numbers: " + numbers);
 
@@ -44,11 +44,17 @@ public class UserInputController {
         String treeJson = bst.toJson();
 
         // Save the user input and tree structure to the database
-        userRepository.save(new User(numbers));
+        User user = new User();
+        user.setUserInput(numbers);
+        user.setTree(treeJson);
+        userRepository.save(user);
 
-        // Redirect back to the user input page after processing the input
-        return "redirect:/userInputPage";
+        // Add the JSON data to the model
+        model.addAttribute("jsonData", treeJson);
+
+        return "process-numbers"; // Show the "process-numbers" page with JSON data
     }
+
     @GetMapping("/previous-trees")
     public String showPreviousTrees(Model model) {
         // Retrieve all user inputs from the database
@@ -76,36 +82,7 @@ public class UserInputController {
         // Add the list of JSON representations of trees to the model
         model.addAttribute("treeJsonList", treeJsonList);
 
-        return "previousTrees"; // This will return the "previousTrees.html" page from "templates" folder
-    }
-
-
-    @GetMapping("/jsonPage")
-    public String jsonPage(Model model) {
-        // Retrieve all user inputs from the database
-        List<User> userInputList = userRepository.findAll();
-
-        // Retrieve the most recent user input
-        String latestUserInput = userInputList.get(userInputList.size() - 1).getUserInput();
-
-        // Construct the binary search tree from the most recent user input
-        BinarySearchTree bst = new BinarySearchTree();
-        String[] numberArray = latestUserInput.split("\\s+");
-        for (String number : numberArray) {
-            try {
-                int value = Integer.parseInt(number);
-                bst.insert(value);
-            } catch (NumberFormatException e) {
-                // Handle invalid input (e.g., non-integer values)
-            }
-        }
-
-        // Convert the tree structure to JSON format
-        String treeJson = bst.toJson();
-
-        // Add the JSON data to the model
-        model.addAttribute("jsonData", treeJson);
-
-        return "jsonPage"; // This will return the "jsonPage.html" page from "templates" folder
+        return "previous-trees";
     }
 }
+

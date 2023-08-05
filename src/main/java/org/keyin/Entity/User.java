@@ -11,7 +11,8 @@ public class User {
     private Long id;
 
     private String userInput;
-
+    @Column(columnDefinition = "TEXT") // This annotation specifies that the tree column should store large text data (JSON representation)
+    private String tree;
     public User() {
     }
 
@@ -35,4 +36,11 @@ public class User {
         this.userInput = userInput;
     }
 
+    public String getTree() {
+        return tree;
+    }
+
+    public void setTree(String tree) {
+        this.tree = tree;
+    }
 }
