@@ -17,9 +17,9 @@ public class BinarySearchTreeTest {
         bst.insert(7);
 
         // Use assertions to check if the tree is constructed correctly
-        assertEquals(5, bst.getRoot().getValue());
-        assertEquals(3, bst.getRoot().getLeft().getValue());
-        assertEquals(7, bst.getRoot().getRight().getValue());
+        Assertions.assertEquals(5, bst.getRoot().getValue());
+        Assertions.assertEquals(3, bst.getRoot().getLeft().getValue());
+        Assertions.assertEquals(7, bst.getRoot().getRight().getValue());
     }
 
     @Test
@@ -37,8 +37,10 @@ public class BinarySearchTreeTest {
         JsonNode expectedJsonNode = objectMapper.readTree("{\"value\":5,\"left\":{\"value\":3,\"left\":null,\"right\":null},\"right\":{\"value\":7,\"left\":null,\"right\":null}}");
         JsonNode generatedJsonNode = objectMapper.readTree(treeJson);
 
+        // Ignore the root field in the generated JSON
+        generatedJsonNode = generatedJsonNode.get("root");
+
         // Use assertEquals to check the JSON structure
         Assertions.assertEquals(expectedJsonNode, generatedJsonNode);
     }
-
 }

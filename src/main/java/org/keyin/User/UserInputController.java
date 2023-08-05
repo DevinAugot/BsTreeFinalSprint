@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +23,12 @@ public class UserInputController {
     public String showUserInputPage() {
         return "enter-numbers";
     }
-
+    @GetMapping("/")
+    public ModelAndView showHomePage() {
+        ModelAndView modelAndView = new ModelAndView("index"); // Return the name of your homepage Thymeleaf template
+        // Add any necessary model attributes if required
+        return modelAndView;
+    }
     @PostMapping("/process-numbers")
     public String processUserInput(@RequestParam("numbers") String numbers, Model model) {
         // Process the user input (you can add your logic here)

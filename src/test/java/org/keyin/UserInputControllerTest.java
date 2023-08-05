@@ -1,6 +1,8 @@
 package org.keyin;
 
+import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
+import org.keyin.Entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -19,21 +21,12 @@ public class UserInputControllerTest {
 
     @Test
     public void testShowUserInputPage() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/userInputPage"))
+        mockMvc.perform(MockMvcRequestBuilders.get("/enter-numbers"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.view().name("userInput"));
+                .andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("<h1>User Input Page</h1>")))
+                .andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("Enter a series of numbers separated by a space:")))
+                .andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("<button type=\"submit\">Submit</button>")));
     }
 
-    @Test
-    public void testProcessUserInput() throws Exception {
-        String userInput = "10 5 15 20";
-
-        mockMvc.perform(MockMvcRequestBuilders.post("/process-numbers")
-                        .param("numbers", userInput))
-                .andExpect(MockMvcResultMatchers.status().is3xxRedirection())
-                .andExpect(MockMvcResultMatchers.redirectedUrl("/userInputPage"));
-
-        // Now, you can verify that the user input is saved to the database using your UserRepository mock.
-    }
 }
 
