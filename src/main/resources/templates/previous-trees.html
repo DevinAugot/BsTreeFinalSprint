@@ -1,18 +1,27 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+  <link rel="stylesheet" href="/styles.css">
   <title>Previous Trees</title>
 </head>
 <body>
-<h1>Previous Trees</h1>
-<a href="/enter-numbers">Go Back</a>
-<a href="/">Home</a>
+<header>
+  <div class="header-content">
+    <h1>Previous Trees</h1>
+    <nav class="button-list">
+      <a th:href="@{/enter-numbers}" class="button">Enter Numbers</a>
+      <a th:href="@{/}" class="button home-btn">Home</a>
+    </nav>
+  </div>
+</header>
 <ul>
   <!-- Iterate over the list of JSON representations to display the trees -->
   <li th:each="treeJson : ${treeJsonList}">
     <pre th:text="${treeJson}"></pre>
   </li>
 </ul>
-
+<footer class="footer">
+  <span>&#169;</span> Devin Augot 2023
+</footer>
 </body>
 </html>

@@ -1,19 +1,28 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>User Input Page</title>
+  <title>Binary Search Tree Generator</title>
+  <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-<h1>User Input Page</h1>
-<form th:action="@{/process-numbers}" method="post">
-  <label for="numbers">Enter a series of numbers separated by a space:</label>
-  <input type="text" id="numbers" name="numbers" required>
-  <button type="submit">Submit</button>
-</form>
-<br>
-<!-- Button to Show Previous -->
-<a th:href="@{/previous-trees}" class="button">Show Previous Trees</a>
-<a th:href="@{/}" class="button">Home</a>
-<br>
+<header>
+  <div class="header-content">
+    <h1>Binary Search Tree Generator</h1>
+    <nav class="button-list">
+      <a th:href="@{/previous-trees}" class="button">Show Previous Trees</a>
+      <a th:href="@{/}" class="button home-btn">Home</a>
+    </nav>
+  </div>
+</header>
+<div class="form-container">
+  <form th:action="@{/process-numbers}" method="post">
+    <label for="numbers" class="form-label">Enter a series of numbers separated by a space:</label>
+    <input type="text" id="numbers" name="numbers" class="form-input" required>
+    <button type="submit" class="submit-button">Submit</button>
+  </form>
+</div>
+<footer class="footer">
+  <span>&#169;</span> Devin Augot 2023
+</footer>
 </body>
 </html>
