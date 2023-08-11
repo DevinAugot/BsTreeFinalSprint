@@ -1,0 +1,113 @@
+/* styles.css */
+
+body {
+    background-color: #2b518f;
+    font-family: Arial, sans-serif;
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #0066cc;
+    padding: 10px;
+    text-align: center;
+}
+
+h1 {
+    margin: 0;
+}
+
+.index-p {
+    text-align: center;
+}
+
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 200px); /* Adjust as needed */
+}
+
+.form-label {
+    font-size: 18px;
+    margin-right: 10px;
+    color: white;
+}
+
+.form-input {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.submit-button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.submit-button:hover {
+    background-color: #45a049;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.header-content h1 {
+    margin: 0;
+}
+
+.button-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+.button-list li {
+    margin-left: 10px;
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.home-btn {
+    background-color: #28a745;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    text-align: left;
+    margin: 20px;
+    color: white;
+}
+
+.footer span {
+    font-size: 16px;
+    margin-right: 5px;
+}
+
+.index-btn-cnt{
+align-container:center;
+}
